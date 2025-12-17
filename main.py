@@ -1,5 +1,4 @@
 import lexer
-print("IMPORTANDO LEXER DESDE:", lexer.__file__)
 from parser import Parser
 from generador import generar_html
 

@@ -1,4 +1,21 @@
-from ast import PageNode, ContainerNode, TextNode, ButtonNode, AlertNode, StyleNode
+import importlib.util
+import sys
+from pathlib import Path
+
+# Cargar explícitamente TU ast.py
+ast_path = Path(__file__).parent / "ast.py"
+
+spec = importlib.util.spec_from_file_location("keny_ast", ast_path)
+keny_ast = importlib.util.module_from_spec(spec)
+sys.modules["keny_ast"] = keny_ast
+spec.loader.exec_module(keny_ast)
+
+PageNode = keny_ast.PageNode
+ContainerNode = keny_ast.ContainerNode
+TextNode = keny_ast.TextNode
+ButtonNode = keny_ast.ButtonNode
+AlertNode = keny_ast.AlertNode
+StyleNode = keny_ast.StyleNode
 
 class Parser:
     def __init__(self, tokens):
@@ -106,7 +123,7 @@ class Parser:
         while self.actual()[0] != "RBRACE":
             token, valor = self.actual()
             if token in (
-                "FONDO", "COLOR_TEXTO", "PADDING",
+                "FONDO", "COLOR_TEXTO", "RELLENO",
                 "MARGEN", "ANCHO", "ALTO"
             ):
                 self.consumir(token)
