@@ -1,0 +1,20 @@
+pagina Inicio {
+    funcion render() {
+        contenedor {
+            estilo {
+                fondo "red"
+                color_texto "white"
+                padding 10
+                margen 5
+                ancho 300
+            }
+
+            texto "Hola con estilo Keny"
+            boton "Click" {
+                al_clic {
+                    alerta "Hermoso"
+                }
+            }
+        }
+    }
+}
