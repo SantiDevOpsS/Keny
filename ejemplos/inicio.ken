@@ -4,7 +4,7 @@ pagina Inicio {
             estilo {
                 fondo "red"
                 color_texto "white"
-                padding 10
+                relleno 10
                 margen 5
                 ancho 300
             }
