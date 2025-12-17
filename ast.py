@@ -28,6 +28,6 @@ class AlertNode:
     def __init__(self, mensaje):
         self.mensaje = mensaje
 
-class StyleNodes:
+class StyleNode:
     def __init__(self, propiedades):
-        self.propiedades = propiedades # dict
+        self.propiedades = propiedades
