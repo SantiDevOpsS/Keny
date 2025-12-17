@@ -5,12 +5,11 @@ TOKENS = [
     ("PAGINA", r"\bpagina\b"),
     ("FUNCION", r"\bfuncion\b"),
     ("RENDER", r"\brender\b"),
-
     ("BOTON", r"\bboton\b"),
     ("AL_CLIC", r"\bal_clic\b"),
     ("ALERTA", r"\balerta\b"),
 
-    # Estilos (100% español)
+    # Estilos
     ("ESTILO", r"\bestilo\b"),
     ("FONDO", r"\bfondo\b"),
     ("COLOR_TEXTO", r"\bcolor_texto\b"),
@@ -18,6 +17,9 @@ TOKENS = [
     ("MARGEN", r"\bmargen\b"),
     ("ANCHO", r"\bancho\b"),
     ("ALTO", r"\balto\b"),
+
+    # 🔥 NUEVO
+    ("NUMERO", r"\b\d+(\.\d+)?\b"),
 
     # Símbolos
     ("LBRACE", r"\{"),
@@ -33,6 +35,7 @@ TOKENS = [
 
     ("ESPACIO", r"[ \t\n]+"),
 ]
+
 
 
 def lexer(codigo):

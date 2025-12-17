@@ -121,20 +121,28 @@ class Parser:
         propiedades = {}
 
         while self.actual()[0] != "RBRACE":
-            token, valor = self.actual()
+            token, _ = self.actual()
+
             if token in (
                 "FONDO", "COLOR_TEXTO", "RELLENO",
                 "MARGEN", "ANCHO", "ALTO"
             ):
                 self.consumir(token)
-                valor_prop = self.consumir("TEXTO") \
-                    if self.actual()[0] == "TEXTO" \
-                    else self.consumir("IDENT")
-                propiedades[token] = valor_prop.strip('"')
-            
+
+                if self.actual()[0] == "TEXTO":
+                    valor_prop = self.consumir("TEXTO").strip('"')
+                elif self.actual()[0] == "NUMERO":
+                    valor_prop = self.consumir("NUMERO")
+                else:
+                    valor_prop = self.consumir("IDENT")
+
+                propiedades[token] = valor_prop
+
             else:
                 raise SyntaxError(
                     f"Propiedad de estilo inválida: {self.actual()}"
                 )
+
         self.consumir("RBRACE")
         return propiedades
+

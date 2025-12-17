@@ -11,4 +11,3 @@ pagina = parser.parse()
 
 html = generar_html(pagina)
 print(html)
-#print(tokens)
