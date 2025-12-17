@@ -43,7 +43,7 @@ def estilos_a_css(estilos):
     mapa = {
         "FONDO": "background",
         "COLOR_TEXTO": "color",
-        "PADDING": "padding",
+        "RELLENO": "padding",
         "MARGEN": "margin",
         "ANCHO": "width",
         "ALTO": "height",
