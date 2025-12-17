@@ -1,4 +1,4 @@
-import lexer
+from lexer import lexer
 from parser import Parser
 from generador import generar_html
 
