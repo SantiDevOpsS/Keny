@@ -8,6 +8,7 @@ TOKENS = [
     ("BOTON", r"\bboton\b"),
     ("AL_CLIC", r"\bal_clic\b"),
     ("ALERTA", r"\balerta\b"),
+    ("ESTADO", r"\bestado\b"),
 
     # Estilos
     ("ESTILO", r"\bestilo\b"),
@@ -18,7 +19,7 @@ TOKENS = [
     ("ANCHO", r"\bancho\b"),
     ("ALTO", r"\balto\b"),
 
-    # 🔥 NUEVO
+    #NUMEROS
     ("NUMERO", r"\b\d+(\.\d+)?\b"),
 
     # Símbolos
@@ -26,6 +27,7 @@ TOKENS = [
     ("RBRACE", r"\}"),
     ("LPAREN", r"\("),
     ("RPAREN", r"\)"),
+    ("IGUAL", r"="),
 
     # Literales
     ("TEXTO", r'"[^"\n]*"'),

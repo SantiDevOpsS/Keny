@@ -1,9 +1,10 @@
 class PageNode:
-    def __init__(self, nombre, elementos):
+    def __init__(self, nombre, elementos, estados=None):
         self.nombre = nombre
         #self.render = None
         #self. contenido = contenido
         self.elementos = elementos #lista
+        self.estados = estados or []
 
 class ContainerNode:
     def __init__(self, elementos, estilos=None):
@@ -31,3 +32,8 @@ class AlertNode:
 class StyleNode:
     def __init__(self, propiedades):
         self.propiedades = propiedades
+
+class StateNode:
+    def __init__(self, nombre, valor):
+        self.nombre = nombre
+        self.valor = valor

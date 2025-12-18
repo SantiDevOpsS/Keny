@@ -16,6 +16,7 @@ TextNode = keny_ast.TextNode
 ButtonNode = keny_ast.ButtonNode
 AlertNode = keny_ast.AlertNode
 StyleNode = keny_ast.StyleNode
+StateNode = keny_ast.StateNode
 
 class Parser:
     def __init__(self, tokens):
@@ -42,6 +43,13 @@ class Parser:
         nombre = self.consumir("IDENT")
         self.consumir("LBRACE")
 
+        estados = []
+
+        while self.actual()[0] == "ESTADO":
+            estados.append(self.estado())
+        
+
+
         self.consumir("FUNCION")
         self.consumir("RENDER")
         self.consumir("LPAREN")
@@ -53,7 +61,7 @@ class Parser:
         self.consumir("RBRACE")
         self.consumir("RBRACE")
 
-        return PageNode(nombre, elementos)
+        return PageNode(nombre, elementos, estados)
 
     def elementos(self):
         elementos = []
@@ -114,6 +122,20 @@ class Parser:
 
         raise SyntaxError(f"Acción desconocida: {self.actual()}")
     
+    def estado(self):
+        self.consumir("ESTADO")
+        nombre = self.consumir("IDENT")
+        self.consumir("IGUAL")
+
+        token, _ = self.actual()
+        if token == "NUMERO":
+            valor = self.consumir("NUMERO")
+        elif token == "TEXTO":
+            valor = self.consumir("TEXTO").strip('"')
+        else:
+            raise SyntaxError(f"Valor de estado inválido: {self.actual()}")
+        return StateNode(nombre, valor)
+    
     def estilo(self):
         self.consumir("ESTILO")
         self.consumir("LBRACE")
@@ -145,4 +167,3 @@ class Parser:
 
         self.consumir("RBRACE")
         return propiedades
-
